@@ -88,3 +88,14 @@ Prepare for UI Developer / Frontend React roles.
 🧩 JS logic challenges for portfolio showcase.
 
 🎨 Portfolio section link (to be added once deployed).
+
+### Day 02 — Arrays & Loops
+**Repo:** [js-day02-arrays](https://github.com/your-username/js-day02-arrays)
+
+**Learnings:**  
+- forEach, map, filter, reduce  
+- Loops recap and practical exercises  
+
+**Deliverables:**  
+- `exercise.js` with all exercises implemented  
+- Daily reflection in README
