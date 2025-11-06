@@ -178,3 +178,21 @@ for (let i = 1; i <= 5; i++) {
 
   console.log(pattern);
 }
+
+
+// Exercise 3 — Stop early when sum exceeds 50
+
+// Start with sum = 0, loop from 1 to 20, and keep adding i to sum.
+// If at any point sum becomes greater than 50, stop the loop and print "Sum exceeded 50 at i = X"
+
+// 🧠 Use break
+
+let sum = 0;
+for (let i = 1; i <= 20; i++) {
+  sum += i; // first add
+
+  if (sum > 50) {
+    console.log("Sum exceeded 50 at i =", i);
+    break; // stop right after exceeding
+  }
+}
