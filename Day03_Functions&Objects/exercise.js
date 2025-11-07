@@ -143,3 +143,109 @@ let book = { title: "Atomic Habits", author: "James Clear", pages: 250 };
 console.log("🧩 Object.keys() & Object.values():");
 console.log(Object.keys(book));
 console.log(Object.values(book));
+
+
+// 📘 DAY 03 — Closures Practice
+// -----------------------------
+// Learning Goal:
+// Understand how closures work — functions remembering variables
+// from their parent scope, even after that parent has finished executing.
+
+// Closures are used everywhere in JS (React hooks, event handlers, counters, etc.)
+
+
+// 1️⃣ Basic Function Returning Another Function
+// ---------------------------------------------
+
+function greet() {
+  return function() {
+    console.log("Hello!");
+  };
+}
+
+// const sayHello = greet();
+// sayHello(); // Expected output: "Hello!"
+
+
+// 2️⃣ Inner Function Accessing Outer Variable
+// -------------------------------------------
+
+function makeGreeter(name) {
+  return function() {
+    console.log("Hello, " + name);
+  };
+}
+
+// const greetAbhi = makeGreeter("Abhishek");
+// greetAbhi(); // "Hello, Abhishek"
+
+
+// 3️⃣ Counter Function Using Closure
+// ----------------------------------
+// Preserves state between calls
+
+function createCounter() {
+  let count = 0;
+  return function() {
+    count++;
+    console.log(count);
+  };
+}
+
+// const counter = createCounter();
+// counter(); // 1
+// counter(); // 2
+// counter(); // 3
+
+
+// 4️⃣ Resettable Counter
+// ----------------------
+// Adds methods to control private state
+
+function counterWithReset() {
+  let count = 0;
+  return {
+    increment() {
+      count++;
+      console.log(count);
+    },
+    reset() {
+      count = 0;
+      console.log("Counter reset");
+    }
+  };
+}
+
+// const myCounter = counterWithReset();
+// myCounter.increment(); // 1
+// myCounter.increment(); // 2
+// myCounter.reset();     // Counter reset
+// myCounter.increment(); // 1
+
+
+// 5️⃣ Run Function Only Once (once)
+// --------------------------------
+// Useful to ensure something runs only a single time (e.g., init function)
+
+function once(fn) {
+  let called = false;
+  return function(...args) {
+    if (!called) {
+      called = true;
+      return fn(...args);
+    } else {
+      console.log("Already called!");
+    }
+  };
+}
+
+// const sayHiOnce = once(() => console.log("Hi there!"));
+// sayHiOnce(); // "Hi there!"
+// sayHiOnce(); // "Already called!"
+
+
+// 🧩 Notes:
+// - Closures allow data privacy (variables stay hidden inside function scope).
+// - React uses this logic in hooks like useState to preserve state between renders.
+// - Any function returned or passed as callback that uses outer variables is a closure.
+
